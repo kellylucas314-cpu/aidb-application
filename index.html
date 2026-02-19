@@ -356,6 +356,104 @@
     font-style: italic;
   }
 
+  /* Clawculator Quiz */
+  .quiz-step { display: none; }
+  .quiz-step.active { display: block; animation: fadeUp 0.3s ease; }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .quiz-q {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.2em;
+    color: white;
+    margin-bottom: 16px;
+  }
+
+  .quiz-options { display: flex; gap: 10px; flex-wrap: wrap; }
+
+  .quiz-btn {
+    background: rgba(0, 229, 255, 0.06);
+    border: 1px solid rgba(0, 229, 255, 0.2);
+    color: #00e5ff;
+    padding: 12px 20px;
+    border-radius: 10px;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.95em;
+    cursor: pointer;
+    transition: all 0.2s;
+    flex: 1;
+    min-width: 120px;
+  }
+
+  .quiz-btn:hover {
+    background: rgba(0, 229, 255, 0.15);
+    border-color: rgba(0, 229, 255, 0.5);
+    transform: translateY(-2px);
+  }
+
+  .progress-dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.15);
+    transition: all 0.3s;
+  }
+
+  .progress-dot.active { background: #00e5ff; box-shadow: 0 0 8px rgba(0,229,255,0.5); }
+  .progress-dot.done { background: rgba(0,229,255,0.4); }
+
+  .result-card {
+    background: rgba(0,229,255,0.04);
+    border: 1px solid rgba(0,229,255,0.15);
+    border-radius: 12px;
+    padding: 16px;
+    margin: 12px 0;
+    text-align: left;
+  }
+
+  .result-card h4 {
+    font-family: 'Space Grotesk', sans-serif;
+    color: #00e5ff;
+    margin-bottom: 6px;
+    font-size: 1em;
+  }
+
+  .result-card p {
+    color: rgba(255,255,255,0.6);
+    font-size: 0.85em;
+    line-height: 1.5;
+  }
+
+  .result-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin: 20px 0;
+  }
+
+  .result-stat {
+    text-align: center;
+    padding: 16px 8px;
+    background: rgba(0,229,255,0.04);
+    border-radius: 10px;
+    border: 1px solid rgba(0,229,255,0.1);
+  }
+
+  .result-stat .num {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.8em;
+    font-weight: 700;
+    color: #00e5ff;
+  }
+
+  .result-stat .label {
+    font-size: 0.75em;
+    color: rgba(255,255,255,0.4);
+    margin-top: 4px;
+  }
+
   @media (max-width: 600px) {
     .scene { width: 300px; height: 320px; }
     .stats-grid { grid-template-columns: 1fr; }
@@ -596,20 +694,100 @@
     <h2>What we'd build for AIDB</h2>
     <div class="build-ideas">
       <div class="build-card">
+        <h3>🧮 The Clawculator</h3>
+        <p>Interactive quiz: answer 5 questions about your work, get personalized agent recommendations + hours saved + API cost estimate. Lead magnet for email capture. <strong>Working prototype below ↓</strong></p>
+      </div>
+      <div class="build-card">
+        <h3>🔥 Agent Roast</h3>
+        <p>Submit your AGENTS.md, get a brutally honest AI review. What's good, what's amateur hour, what you're missing. Viral shareability + drives Training signups.</p>
+      </div>
+      <div class="build-card">
         <h3>🧪 Ship or Skip</h3>
-        <p>Weekly segment: 3 new OpenClaw skills drop, I test all three in a real workflow. Ship it or skip it, with receipts. Feeds the ClawCamp resource library with tested, rated entries.</p>
+        <p>Weekly: 3 new OpenClaw skills drop, I test all three in real workflows. Ship it or skip it, with receipts. Feeds ClawCamp resource library with tested, rated entries.</p>
       </div>
       <div class="build-card">
-        <h3>🏆 The OpenClaw Combine</h3>
-        <p>Weekly challenge: submit your agent to a standardized real task, timed, scored. Leaderboard drives competition, competition drives Training enrollments.</p>
+        <h3>📋 Agent Templates Gallery</h3>
+        <p>Downloadable AGENTS.md + SOUL.md starter kits: "The Fundraiser," "The Content Machine," "The Job Hunter." Drop into OpenClaw and go. Downloads = email capture.</p>
       </div>
       <div class="build-card">
-        <h3>📡 Live Skill Radar</h3>
-        <p>Always-on agent monitoring GitHub, ClawHub, Reddit, and X. Auto-catalogs new capabilities with tags and difficulty. Daily brief for the hosts: "here's what dropped and why it matters."</p>
+        <h3>📡 Changelog → English</h3>
+        <p>Every OpenClaw GitHub release auto-translated into "here's what this means for you" with use cases. THE resource non-technical builders bookmark.</p>
       </div>
       <div class="build-card">
-        <h3>🦞 This Application</h3>
-        <p>Built by a human and her agent in one afternoon. Vibe coded. Deployed to GitHub Pages. The medium is the message.</p>
+        <h3>🏆 "My Agent Did This"</h3>
+        <p>Community showcase: screenshot + one sentence. Curated weekly, best featured on podcast. Social proof engine that makes non-builders want to start.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- THE CLAWCULATOR (Working Prototype) -->
+  <div class="section" id="clawculator" style="border-color: rgba(0,229,255,0.2); background: rgba(0,229,255,0.02);">
+    <h2 style="display: flex; align-items: center; gap: 10px;">🧮 The Clawculator <span style="font-size: 0.5em; background: #00e5ff; color: #0a0a1a; padding: 3px 10px; border-radius: 20px; font-weight: 600;">WORKING PROTOTYPE</span></h2>
+    <p style="color: rgba(255,255,255,0.5); margin-bottom: 24px;">Answer 5 questions. Get your personalized agent game plan.</p>
+
+    <div id="quiz-container">
+      <!-- Question 1 -->
+      <div class="quiz-step active" data-step="1">
+        <div class="quiz-q">How many emails do you process per day?</div>
+        <div class="quiz-options">
+          <button class="quiz-btn" data-value="low" onclick="answer(1, 'low')">Under 20</button>
+          <button class="quiz-btn" data-value="med" onclick="answer(1, 'med')">20-50</button>
+          <button class="quiz-btn" data-value="high" onclick="answer(1, 'high')">50+</button>
+        </div>
+      </div>
+
+      <!-- Question 2 -->
+      <div class="quiz-step" data-step="2">
+        <div class="quiz-q">Do you post content on social media for work?</div>
+        <div class="quiz-options">
+          <button class="quiz-btn" onclick="answer(2, 'none')">Never</button>
+          <button class="quiz-btn" onclick="answer(2, 'some')">A few times a week</button>
+          <button class="quiz-btn" onclick="answer(2, 'lots')">Daily / multiple platforms</button>
+        </div>
+      </div>
+
+      <!-- Question 3 -->
+      <div class="quiz-step" data-step="3">
+        <div class="quiz-q">Do you track contacts, leads, or relationships?</div>
+        <div class="quiz-options">
+          <button class="quiz-btn" onclick="answer(3, 'no')">Not really</button>
+          <button class="quiz-btn" onclick="answer(3, 'messy')">Yes, but it's a mess</button>
+          <button class="quiz-btn" onclick="answer(3, 'crm')">Yes, in a CRM or spreadsheet</button>
+        </div>
+      </div>
+
+      <!-- Question 4 -->
+      <div class="quiz-step" data-step="4">
+        <div class="quiz-q">How much time do you spend researching (competitors, market, news)?</div>
+        <div class="quiz-options">
+          <button class="quiz-btn" onclick="answer(4, 'little')">Almost none</button>
+          <button class="quiz-btn" onclick="answer(4, 'some')">A few hours/week</button>
+          <button class="quiz-btn" onclick="answer(4, 'lot')">It's a big part of my job</button>
+        </div>
+      </div>
+
+      <!-- Question 5 -->
+      <div class="quiz-step" data-step="5">
+        <div class="quiz-q">What's your technical comfort level?</div>
+        <div class="quiz-options">
+          <button class="quiz-btn" onclick="answer(5, 'none')">I can barely use Terminal</button>
+          <button class="quiz-btn" onclick="answer(5, 'some')">I can follow instructions</button>
+          <button class="quiz-btn" onclick="answer(5, 'dev')">I write code</button>
+        </div>
+      </div>
+
+      <!-- Results -->
+      <div class="quiz-step" data-step="results" id="quiz-results"></div>
+    </div>
+
+    <!-- Progress bar -->
+    <div style="margin-top: 20px;">
+      <div style="display: flex; gap: 6px;" id="progress-dots">
+        <div class="progress-dot active"></div>
+        <div class="progress-dot"></div>
+        <div class="progress-dot"></div>
+        <div class="progress-dot"></div>
+        <div class="progress-dot"></div>
       </div>
     </div>
   </div>
@@ -628,6 +806,119 @@
 </div>
 
 <script>
+  // Clawculator Quiz Logic
+  const answers = {};
+  function answer(step, value) {
+    answers[step] = value;
+    // Update progress
+    document.querySelectorAll('.progress-dot').forEach((dot, i) => {
+      if (i < step) { dot.classList.add('done'); dot.classList.remove('active'); }
+      else if (i === step && step < 5) { dot.classList.add('active'); }
+    });
+    // Hide current, show next
+    document.querySelector(`.quiz-step[data-step="${step}"]`).classList.remove('active');
+    if (step < 5) {
+      document.querySelector(`.quiz-step[data-step="${step + 1}"]`).classList.add('active');
+    } else {
+      showResults();
+    }
+  }
+
+  function showResults() {
+    const r = document.getElementById('quiz-results');
+    let agents = [];
+    let hoursSaved = 0;
+    let monthlyCost = 5; // base
+
+    // Email
+    if (answers[1] === 'high') {
+      agents.push({ name: '📧 Email Triage Agent', desc: 'Auto-categorizes inbox, drafts replies to common emails, sends you a daily digest of what needs attention. Install: gog skill + heartbeat cron.', skill: 'gog', hours: 8 });
+      hoursSaved += 8; monthlyCost += 15;
+    } else if (answers[1] === 'med') {
+      agents.push({ name: '📧 Email Digest Agent', desc: 'Morning summary of important emails + flagged replies. Lighter than full triage but still saves you from inbox doom-scrolling.', skill: 'gog', hours: 4 });
+      hoursSaved += 4; monthlyCost += 8;
+    }
+
+    // Social
+    if (answers[2] === 'lots') {
+      agents.push({ name: '📱 Content Distribution Agent', desc: 'Write once, post everywhere. Schedules across 9 platforms, tracks performance, suggests best posting times. Install: post-bridge skill ($14/mo).', skill: 'post-bridge', hours: 10 });
+      hoursSaved += 10; monthlyCost += 20;
+    } else if (answers[2] === 'some') {
+      agents.push({ name: '🐦 Social Posting Agent', desc: 'Handles Twitter/X and one other platform. Drafts posts from your notes, schedules them, tracks engagement.', skill: 'bird', hours: 4 });
+      hoursSaved += 4; monthlyCost += 5;
+    }
+
+    // CRM
+    if (answers[3] === 'messy') {
+      agents.push({ name: '🗂️ CRM Builder Agent', desc: 'Scans your email history, auto-builds a contact database, tracks last contact dates, flags people you haven\'t followed up with. Turns chaos into a pipeline.', skill: 'sqlite + email_sync', hours: 6 });
+      hoursSaved += 6; monthlyCost += 5;
+    } else if (answers[3] === 'crm') {
+      agents.push({ name: '🔄 CRM Sync Agent', desc: 'Keeps your existing CRM updated from email and calendar. Auto-logs meetings, flags stale leads, drafts follow-ups.', skill: 'notion/hubspot + gog', hours: 5 });
+      hoursSaved += 5; monthlyCost += 8;
+    }
+
+    // Research
+    if (answers[4] === 'lot') {
+      agents.push({ name: '🔍 Research Agent', desc: 'Dedicated agent that monitors competitors, scrapes news, and delivers a daily brief. Runs overnight so you wake up informed.', skill: 'firecrawl + web_search', hours: 12 });
+      hoursSaved += 12; monthlyCost += 15;
+    } else if (answers[4] === 'some') {
+      agents.push({ name: '📰 Morning Brief Agent', desc: 'Curated daily news digest on your topics. 5-minute read in Telegram every morning with your coffee.', skill: 'web_search + cron', hours: 4 });
+      hoursSaved += 4; monthlyCost += 5;
+    }
+
+    // Always recommend a base agent
+    if (agents.length === 0) {
+      agents.push({ name: '🦞 Your First Agent', desc: 'A personal assistant connected to your calendar and messages. Start here: it learns your preferences and becomes your daily copilot.', skill: 'gog + telegram', hours: 3 });
+      hoursSaved = 3; monthlyCost = 10;
+    }
+
+    // Tech level note
+    let techNote = '';
+    if (answers[5] === 'none') {
+      techNote = '<div class="result-card"><h4>💡 Your Setup Path</h4><p>No code needed. OpenClaw installs in 20 minutes with a step-by-step guide. Your AI build partner (Claude, ChatGPT) walks you through everything. <strong>ClawCamp is literally designed for you.</strong></p></div>';
+    } else if (answers[5] === 'dev') {
+      techNote = '<div class="result-card"><h4>💡 Power Move</h4><p>With your dev background, skip the basics. Go straight to multi-agent setups with Antfarm, custom skills on ClawHub, and MCP connectors. You\'ll be dangerous in a weekend.</p></div>';
+    }
+
+    r.innerHTML = `
+      <div class="quiz-q" style="margin-bottom: 20px;">Your Agent Game Plan 🎯</div>
+      <div class="result-stats">
+        <div class="result-stat">
+          <div class="num">${agents.length}</div>
+          <div class="label">Agents to Build</div>
+        </div>
+        <div class="result-stat">
+          <div class="num">~${hoursSaved}</div>
+          <div class="label">Hours Saved / Week</div>
+        </div>
+        <div class="result-stat">
+          <div class="num">~$${monthlyCost}</div>
+          <div class="label">Est. Monthly Cost</div>
+        </div>
+      </div>
+      <div style="font-size: 0.85em; color: rgba(255,255,255,0.4); text-align: center; margin-bottom: 20px;">Build priority: start from the top ↓</div>
+      ${agents.map((a, i) => `<div class="result-card"><h4>${i+1}. ${a.name}</h4><p>${a.desc}</p></div>`).join('')}
+      ${techNote}
+      <div style="text-align: center; margin-top: 24px; padding: 16px; background: rgba(231,76,60,0.08); border: 1px solid rgba(231,76,60,0.2); border-radius: 12px;">
+        <p style="color: rgba(255,255,255,0.7); font-size: 0.9em;">This is a prototype built by Kelly + Kip in one afternoon.<br>Imagine what it looks like with the full ClawCamp skill database behind it.</p>
+        <button onclick="resetQuiz()" style="margin-top: 12px; background: rgba(0,229,255,0.1); border: 1px solid rgba(0,229,255,0.3); color: #00e5ff; padding: 10px 24px; border-radius: 8px; cursor: pointer; font-family: 'Inter', sans-serif;">↻ Take it again</button>
+      </div>
+    `;
+    r.classList.add('active');
+    document.querySelectorAll('.progress-dot').forEach(d => d.classList.add('done'));
+  }
+
+  function resetQuiz() {
+    Object.keys(answers).forEach(k => delete answers[k]);
+    document.querySelectorAll('.quiz-step').forEach(s => s.classList.remove('active'));
+    document.querySelector('.quiz-step[data-step="1"]').classList.add('active');
+    document.querySelectorAll('.progress-dot').forEach((d, i) => {
+      d.classList.remove('done');
+      d.classList.remove('active');
+      if (i === 0) d.classList.add('active');
+    });
+  }
+
   // Generate stars
   const starsEl = document.getElementById('stars');
   for (let i = 0; i < 100; i++) {
