@@ -692,105 +692,15 @@
   <!-- What We'd Build -->
   <div class="section">
     <h2>What we'd build for AIDB</h2>
-    <div class="build-ideas">
-      <div class="build-card">
-        <h3>🧮 The Clawculator</h3>
-        <p>Interactive quiz: answer 5 questions about your work, get personalized agent recommendations + hours saved + API cost estimate. Lead magnet for email capture. <strong>Working prototype below ↓</strong></p>
-      </div>
-      <div class="build-card">
-        <h3>🔥 Agent Roast</h3>
-        <p>Submit your AGENTS.md, get a brutally honest AI review. What's good, what's amateur hour, what you're missing. Viral shareability + drives Training signups.</p>
-      </div>
-      <div class="build-card">
-        <h3>🧪 Ship or Skip</h3>
-        <p>Weekly: 3 new OpenClaw skills drop, I test all three in real workflows. Ship it or skip it, with receipts. Feeds ClawCamp resource library with tested, rated entries.</p>
-      </div>
-      <div class="build-card">
-        <h3>📋 Agent Templates Gallery</h3>
-        <p>Downloadable AGENTS.md + SOUL.md starter kits: "The Fundraiser," "The Content Machine," "The Job Hunter." Drop into OpenClaw and go. Downloads = email capture.</p>
-      </div>
-      <div class="build-card">
-        <h3>📡 Changelog → English</h3>
-        <p>Every OpenClaw GitHub release auto-translated into "here's what this means for you" with use cases. THE resource non-technical builders bookmark.</p>
-      </div>
-      <div class="build-card">
-        <h3>🏆 "My Agent Did This"</h3>
-        <p>Community showcase: screenshot + one sentence. Curated weekly, best featured on podcast. Social proof engine that makes non-builders want to start.</p>
-      </div>
+    <div class="section" style="border: none; padding: 0; margin: 0; background: none;">
+      <h3 style="font-family: 'Space Grotesk', sans-serif; color: #00e5ff; font-size: 1.1em; margin-bottom: 12px;">🧮 The Clawculator</h3>
+      <p style="line-height: 1.7; color: rgba(255,255,255,0.7);">Answer 5 questions about your work. Get a personalized agent game plan: which agents to build first, estimated hours saved per week, and API cost. Works as a lead magnet for email capture and a funnel into ClawCamp and AIDB Training.</p>
+      <p style="line-height: 1.7; color: rgba(255,255,255,0.7); margin-top: 12px;">On the back end, an always-on agent monitors GitHub releases, ClawHub uploads, Reddit, and X so the recommendations stay current with the latest skills and capabilities. The database that powers the quiz IS the ClawCamp resource library.</p>
+      <p style="line-height: 1.7; color: rgba(255,255,255,0.5); margin-top: 12px; font-style: italic;">One tool that drives site visits, email signups, AND Training enrollments.</p>
     </div>
   </div>
 
-  <!-- THE CLAWCULATOR (Working Prototype) -->
-  <div class="section" id="clawculator" style="border-color: rgba(0,229,255,0.2); background: rgba(0,229,255,0.02);">
-    <h2 style="display: flex; align-items: center; gap: 10px;">🧮 The Clawculator <span style="font-size: 0.5em; background: #00e5ff; color: #0a0a1a; padding: 3px 10px; border-radius: 20px; font-weight: 600;">WORKING PROTOTYPE</span></h2>
-    <p style="color: rgba(255,255,255,0.5); margin-bottom: 24px;">Answer 5 questions. Get your personalized agent game plan.</p>
-
-    <div id="quiz-container">
-      <!-- Question 1 -->
-      <div class="quiz-step active" data-step="1">
-        <div class="quiz-q">How many emails do you process per day?</div>
-        <div class="quiz-options">
-          <button class="quiz-btn" data-value="low" onclick="answer(1, 'low')">Under 20</button>
-          <button class="quiz-btn" data-value="med" onclick="answer(1, 'med')">20-50</button>
-          <button class="quiz-btn" data-value="high" onclick="answer(1, 'high')">50+</button>
-        </div>
-      </div>
-
-      <!-- Question 2 -->
-      <div class="quiz-step" data-step="2">
-        <div class="quiz-q">Do you post content on social media for work?</div>
-        <div class="quiz-options">
-          <button class="quiz-btn" onclick="answer(2, 'none')">Never</button>
-          <button class="quiz-btn" onclick="answer(2, 'some')">A few times a week</button>
-          <button class="quiz-btn" onclick="answer(2, 'lots')">Daily / multiple platforms</button>
-        </div>
-      </div>
-
-      <!-- Question 3 -->
-      <div class="quiz-step" data-step="3">
-        <div class="quiz-q">Do you track contacts, leads, or relationships?</div>
-        <div class="quiz-options">
-          <button class="quiz-btn" onclick="answer(3, 'no')">Not really</button>
-          <button class="quiz-btn" onclick="answer(3, 'messy')">Yes, but it's a mess</button>
-          <button class="quiz-btn" onclick="answer(3, 'crm')">Yes, in a CRM or spreadsheet</button>
-        </div>
-      </div>
-
-      <!-- Question 4 -->
-      <div class="quiz-step" data-step="4">
-        <div class="quiz-q">How much time do you spend researching (competitors, market, news)?</div>
-        <div class="quiz-options">
-          <button class="quiz-btn" onclick="answer(4, 'little')">Almost none</button>
-          <button class="quiz-btn" onclick="answer(4, 'some')">A few hours/week</button>
-          <button class="quiz-btn" onclick="answer(4, 'lot')">It's a big part of my job</button>
-        </div>
-      </div>
-
-      <!-- Question 5 -->
-      <div class="quiz-step" data-step="5">
-        <div class="quiz-q">What's your technical comfort level?</div>
-        <div class="quiz-options">
-          <button class="quiz-btn" onclick="answer(5, 'none')">I can barely use Terminal</button>
-          <button class="quiz-btn" onclick="answer(5, 'some')">I can follow instructions</button>
-          <button class="quiz-btn" onclick="answer(5, 'dev')">I write code</button>
-        </div>
-      </div>
-
-      <!-- Results -->
-      <div class="quiz-step" data-step="results" id="quiz-results"></div>
-    </div>
-
-    <!-- Progress bar -->
-    <div style="margin-top: 20px;">
-      <div style="display: flex; gap: 6px;" id="progress-dots">
-        <div class="progress-dot active"></div>
-        <div class="progress-dot"></div>
-        <div class="progress-dot"></div>
-        <div class="progress-dot"></div>
-        <div class="progress-dot"></div>
-      </div>
-    </div>
-  </div>
+  <!-- Clawculator prototype saved for later -->
 
   <!-- Signature -->
   <div class="signature">
