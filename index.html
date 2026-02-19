@@ -1,0 +1,864 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kelly + Kip 🦞🦉 | AIDB Clawrchitect Application</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=Inter:wght@400;500&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: #0a0a1a;
+    color: #e0e0e0;
+    font-family: 'Inter', sans-serif;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  .stars {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    z-index: 0;
+    pointer-events: none;
+  }
+
+  .star {
+    position: absolute;
+    width: 2px; height: 2px;
+    background: white;
+    border-radius: 50%;
+    animation: twinkle var(--duration) ease-in-out infinite;
+    opacity: 0;
+  }
+
+  @keyframes twinkle {
+    0%, 100% { opacity: 0; }
+    50% { opacity: var(--brightness); }
+  }
+
+  .container {
+    position: relative;
+    z-index: 1;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    text-align: center;
+  }
+
+  /* === LOBSTER SCENE === */
+  .scene {
+    position: relative;
+    width: 400px;
+    height: 400px;
+    margin: 0 auto 40px;
+  }
+
+  /* Lobster body */
+  .lobster {
+    position: absolute;
+    bottom: 80px;
+    left: 50%;
+    transform: translateX(-50%);
+    animation: bobble 3s ease-in-out infinite;
+  }
+
+  @keyframes bobble {
+    0%, 100% { transform: translateX(-50%) translateY(0); }
+    50% { transform: translateX(-50%) translateY(-8px); }
+  }
+
+  .lobster-body {
+    width: 120px;
+    height: 80px;
+    background: linear-gradient(135deg, #e74c3c, #c0392b);
+    border-radius: 60px 60px 40px 40px;
+    position: relative;
+    box-shadow: 0 4px 20px rgba(231, 76, 60, 0.4);
+  }
+
+  /* Eyes */
+  .lobster-eyes {
+    position: absolute;
+    top: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 24px;
+  }
+
+  .eye-stalk {
+    width: 4px;
+    height: 20px;
+    background: #c0392b;
+    border-radius: 2px;
+    position: relative;
+  }
+
+  .eye {
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 14px;
+    height: 14px;
+    background: white;
+    border-radius: 50%;
+    border: 2px solid #2c3e50;
+  }
+
+  .pupil {
+    width: 6px;
+    height: 6px;
+    background: #2c3e50;
+    border-radius: 50%;
+    position: absolute;
+    top: 3px;
+    left: 4px;
+    animation: lookAround 4s ease-in-out infinite;
+  }
+
+  @keyframes lookAround {
+    0%, 100% { left: 4px; }
+    25% { left: 2px; }
+    75% { left: 6px; }
+  }
+
+  /* Smile */
+  .smile {
+    position: absolute;
+    bottom: 18px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 30px;
+    height: 15px;
+    border: 3px solid #2c3e50;
+    border-top: none;
+    border-radius: 0 0 20px 20px;
+  }
+
+  /* Claws */
+  .claw-left, .claw-right {
+    position: absolute;
+    top: 15px;
+  }
+
+  .claw-left {
+    left: -45px;
+    animation: waveLeft 2s ease-in-out infinite;
+    transform-origin: right center;
+  }
+
+  .claw-right {
+    right: -55px;
+    animation: holdCan 3s ease-in-out infinite;
+    transform-origin: left center;
+  }
+
+  @keyframes waveLeft {
+    0%, 100% { transform: rotate(0deg); }
+    25% { transform: rotate(-20deg); }
+    50% { transform: rotate(10deg); }
+    75% { transform: rotate(-15deg); }
+  }
+
+  @keyframes holdCan {
+    0%, 100% { transform: rotate(0deg); }
+    50% { transform: rotate(-5deg); }
+  }
+
+  .claw-arm {
+    width: 35px;
+    height: 8px;
+    background: #e74c3c;
+    border-radius: 4px;
+  }
+
+  .claw-pincer {
+    width: 25px;
+    height: 20px;
+    position: relative;
+    margin-left: -5px;
+  }
+
+  .pincer-top, .pincer-bottom {
+    position: absolute;
+    width: 25px;
+    height: 10px;
+    background: #e74c3c;
+    border-radius: 12px 12px 0 0;
+  }
+
+  .pincer-top {
+    top: 0;
+    animation: pincerOpen 1.5s ease-in-out infinite;
+    transform-origin: bottom left;
+  }
+
+  .pincer-bottom {
+    bottom: 0;
+    border-radius: 0 0 12px 12px;
+  }
+
+  @keyframes pincerOpen {
+    0%, 100% { transform: rotate(0deg); }
+    50% { transform: rotate(-15deg); }
+  }
+
+  /* Red Bull Can */
+  .redbull-can {
+    position: absolute;
+    right: -80px;
+    top: -15px;
+    animation: tiltCan 3s ease-in-out infinite;
+    transform-origin: bottom center;
+  }
+
+  @keyframes tiltCan {
+    0%, 100% { transform: rotate(0deg); }
+    30% { transform: rotate(-25deg); }
+    50% { transform: rotate(-25deg); }
+    80% { transform: rotate(0deg); }
+  }
+
+  .can-body {
+    width: 28px;
+    height: 65px;
+    background: linear-gradient(180deg, #c0c0c0 0%, #c0c0c0 15%, #1a3a6b 15%, #1a3a6b 45%, #d4af37 45%, #d4af37 55%, #cc0000 55%, #cc0000 100%);
+    border-radius: 6px 6px 4px 4px;
+    position: relative;
+    box-shadow: 2px 2px 10px rgba(0,0,0,0.3);
+  }
+
+  .can-body::before {
+    content: '🐂';
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 10px;
+  }
+
+  /* Splash drops */
+  .splash {
+    position: absolute;
+    right: -65px;
+    top: -25px;
+    opacity: 0;
+    animation: splash 3s ease-in-out infinite;
+  }
+
+  @keyframes splash {
+    0%, 25% { opacity: 0; transform: translateY(0); }
+    35% { opacity: 1; transform: translateY(-5px); }
+    50% { opacity: 1; transform: translateY(0); }
+    55% { opacity: 0; transform: translateY(10px); }
+    100% { opacity: 0; }
+  }
+
+  .drop {
+    width: 4px;
+    height: 6px;
+    background: #f5d442;
+    border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+    position: absolute;
+  }
+
+  .drop:nth-child(1) { left: 0; top: 0; animation-delay: 0.1s; }
+  .drop:nth-child(2) { left: 10px; top: -5px; animation-delay: 0.2s; }
+  .drop:nth-child(3) { left: 5px; top: 5px; animation-delay: 0.15s; }
+
+  /* Tail */
+  .tail {
+    position: absolute;
+    bottom: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    animation: tailWag 2s ease-in-out infinite;
+  }
+
+  .tail-segment {
+    width: 60px;
+    height: 12px;
+    background: linear-gradient(90deg, #c0392b, #e74c3c);
+    border-radius: 0 0 6px 6px;
+    margin: 0 auto;
+  }
+
+  .tail-fan {
+    display: flex;
+    gap: 2px;
+    justify-content: center;
+    margin-top: 2px;
+  }
+
+  .tail-fin {
+    width: 18px;
+    height: 14px;
+    background: #c0392b;
+    border-radius: 0 0 10px 10px;
+  }
+
+  @keyframes tailWag {
+    0%, 100% { transform: translateX(-50%) rotate(0deg); }
+    50% { transform: translateX(-50%) rotate(5deg); }
+  }
+
+  /* Legs */
+  .legs {
+    position: absolute;
+    bottom: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 8px;
+  }
+
+  .leg {
+    width: 3px;
+    height: 15px;
+    background: #c0392b;
+    border-radius: 2px;
+    animation: legWalk 1s ease-in-out infinite;
+  }
+
+  .leg:nth-child(even) { animation-delay: 0.5s; }
+
+  @keyframes legWalk {
+    0%, 100% { transform: rotate(-5deg); }
+    50% { transform: rotate(5deg); }
+  }
+
+  /* Owl (Kip) */
+  .owl {
+    position: absolute;
+    bottom: 90px;
+    left: 55px;
+    animation: owlBob 4s ease-in-out infinite;
+  }
+
+  @keyframes owlBob {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-5px) rotate(3deg); }
+  }
+
+  .owl-body {
+    width: 50px;
+    height: 55px;
+    background: linear-gradient(180deg, #8B6914, #a67c00);
+    border-radius: 25px 25px 20px 20px;
+    position: relative;
+    box-shadow: 0 3px 15px rgba(0,0,0,0.3);
+  }
+
+  .owl-eyes {
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 6px;
+  }
+
+  .owl-eye {
+    width: 16px;
+    height: 16px;
+    background: white;
+    border-radius: 50%;
+    border: 2px solid #5a4500;
+    position: relative;
+  }
+
+  .owl-pupil {
+    width: 8px;
+    height: 8px;
+    background: #2c3e50;
+    border-radius: 50%;
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    animation: owlLook 5s ease-in-out infinite;
+  }
+
+  @keyframes owlLook {
+    0%, 100% { left: 3px; top: 3px; }
+    30% { left: 5px; top: 2px; }
+    60% { left: 2px; top: 4px; }
+  }
+
+  .owl-beak {
+    position: absolute;
+    top: 24px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 8px solid #f39c12;
+  }
+
+  .owl-wings {
+    position: absolute;
+    top: 30px;
+    width: 100%;
+  }
+
+  .owl-wing-left, .owl-wing-right {
+    position: absolute;
+    width: 15px;
+    height: 25px;
+    background: #7a5f10;
+    border-radius: 50%;
+  }
+
+  .owl-wing-left { left: -5px; transform: rotate(15deg); }
+  .owl-wing-right { right: -5px; transform: rotate(-15deg); }
+
+  /* Circuit pattern on owl (Kip's signature) */
+  .circuit-line {
+    position: absolute;
+    background: #00e5ff;
+    opacity: 0.6;
+    border-radius: 1px;
+    animation: circuitGlow 2s ease-in-out infinite alternate;
+  }
+
+  @keyframes circuitGlow {
+    0% { opacity: 0.3; }
+    100% { opacity: 0.8; }
+  }
+
+  .circuit-line:nth-child(1) { width: 20px; height: 1px; top: 38px; left: 15px; }
+  .circuit-line:nth-child(2) { width: 1px; height: 12px; top: 38px; left: 35px; }
+  .circuit-line:nth-child(3) { width: 15px; height: 1px; top: 44px; left: 20px; }
+
+  .owl-feet {
+    position: absolute;
+    bottom: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 12px;
+  }
+
+  .owl-foot {
+    width: 12px;
+    height: 5px;
+    background: #f39c12;
+    border-radius: 0 0 6px 6px;
+  }
+
+  /* Speech bubble */
+  .speech-bubble {
+    position: absolute;
+    top: 20px;
+    left: 10px;
+    background: rgba(0, 229, 255, 0.1);
+    border: 1px solid rgba(0, 229, 255, 0.3);
+    border-radius: 12px;
+    padding: 8px 14px;
+    font-size: 11px;
+    color: #00e5ff;
+    font-family: 'Space Grotesk', sans-serif;
+    animation: fadeInOut 6s ease-in-out infinite;
+    white-space: nowrap;
+  }
+
+  .speech-bubble::after {
+    content: '';
+    position: absolute;
+    bottom: -6px;
+    right: 20px;
+    width: 0;
+    height: 0;
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    border-top: 6px solid rgba(0, 229, 255, 0.3);
+  }
+
+  @keyframes fadeInOut {
+    0%, 100% { opacity: 0; }
+    15%, 85% { opacity: 1; }
+  }
+
+  /* Floor */
+  .floor {
+    position: absolute;
+    bottom: 60px;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, rgba(0,229,255,0.3), transparent);
+  }
+
+  .floor-glow {
+    position: absolute;
+    bottom: 55px;
+    left: 0;
+    right: 0;
+    height: 20px;
+    background: radial-gradient(ellipse at center, rgba(0,229,255,0.08) 0%, transparent 70%);
+  }
+
+  /* === TEXT CONTENT === */
+  h1 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 2.4em;
+    font-weight: 700;
+    color: white;
+    margin-bottom: 8px;
+    line-height: 1.2;
+  }
+
+  h1 span.highlight {
+    background: linear-gradient(135deg, #00e5ff, #e74c3c);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .subtitle {
+    font-size: 1.1em;
+    color: rgba(255,255,255,0.5);
+    margin-bottom: 40px;
+    font-family: 'Space Grotesk', sans-serif;
+  }
+
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin: 40px 0;
+  }
+
+  .stat-card {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 12px;
+    padding: 20px 12px;
+    transition: border-color 0.3s;
+  }
+
+  .stat-card:hover {
+    border-color: rgba(0,229,255,0.3);
+  }
+
+  .stat-number {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 2em;
+    font-weight: 700;
+    color: #00e5ff;
+  }
+
+  .stat-label {
+    font-size: 0.8em;
+    color: rgba(255,255,255,0.4);
+    margin-top: 4px;
+  }
+
+  .section {
+    text-align: left;
+    margin: 40px 0;
+    padding: 24px;
+    background: rgba(255,255,255,0.02);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 16px;
+  }
+
+  .section h2 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.3em;
+    color: white;
+    margin-bottom: 16px;
+  }
+
+  .section p, .section li {
+    line-height: 1.7;
+    color: rgba(255,255,255,0.7);
+    font-size: 0.95em;
+  }
+
+  .section ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .section li {
+    padding: 6px 0 6px 24px;
+    position: relative;
+  }
+
+  .section li::before {
+    content: '🦞';
+    position: absolute;
+    left: 0;
+  }
+
+  .build-ideas {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin: 30px 0;
+  }
+
+  .build-card {
+    background: rgba(0, 229, 255, 0.03);
+    border: 1px solid rgba(0, 229, 255, 0.15);
+    border-radius: 12px;
+    padding: 20px;
+    text-align: left;
+    transition: all 0.3s;
+  }
+
+  .build-card:hover {
+    border-color: rgba(0, 229, 255, 0.4);
+    transform: translateY(-2px);
+  }
+
+  .build-card h3 {
+    font-family: 'Space Grotesk', sans-serif;
+    color: #00e5ff;
+    font-size: 1em;
+    margin-bottom: 8px;
+  }
+
+  .build-card p {
+    font-size: 0.85em;
+    color: rgba(255,255,255,0.5);
+    line-height: 1.5;
+  }
+
+  .signature {
+    margin-top: 50px;
+    padding: 30px;
+    border-top: 1px solid rgba(255,255,255,0.06);
+  }
+
+  .sig-names {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.4em;
+    color: white;
+    margin-bottom: 8px;
+  }
+
+  .sig-detail {
+    color: rgba(255,255,255,0.4);
+    font-size: 0.9em;
+  }
+
+  .sig-detail a {
+    color: #00e5ff;
+    text-decoration: none;
+  }
+
+  .built-with {
+    margin-top: 20px;
+    font-size: 0.75em;
+    color: rgba(255,255,255,0.2);
+    font-style: italic;
+  }
+
+  @media (max-width: 600px) {
+    .scene { width: 300px; height: 320px; }
+    .stats-grid { grid-template-columns: 1fr; }
+    .build-ideas { grid-template-columns: 1fr; }
+    h1 { font-size: 1.8em; }
+  }
+</style>
+</head>
+<body>
+
+<div class="stars" id="stars"></div>
+
+<div class="container">
+
+  <!-- Animated Scene -->
+  <div class="scene">
+    <div class="floor"></div>
+    <div class="floor-glow"></div>
+
+    <!-- Kip the Owl -->
+    <div class="owl">
+      <div class="speech-bubble">I drafted this app btw 🦉</div>
+      <div class="owl-body">
+        <div class="owl-eyes">
+          <div class="owl-eye"><div class="owl-pupil"></div></div>
+          <div class="owl-eye"><div class="owl-pupil"></div></div>
+        </div>
+        <div class="owl-beak"></div>
+        <div class="owl-wings">
+          <div class="owl-wing-left"></div>
+          <div class="owl-wing-right"></div>
+        </div>
+        <div class="circuit-line"></div>
+        <div class="circuit-line"></div>
+        <div class="circuit-line"></div>
+        <div class="owl-feet">
+          <div class="owl-foot"></div>
+          <div class="owl-foot"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Lobster -->
+    <div class="lobster">
+      <div class="lobster-body">
+        <div class="lobster-eyes">
+          <div class="eye-stalk"><div class="eye"><div class="pupil"></div></div></div>
+          <div class="eye-stalk"><div class="eye"><div class="pupil"></div></div></div>
+        </div>
+        <div class="smile"></div>
+
+        <!-- Left Claw (waving) -->
+        <div class="claw-left">
+          <div class="claw-arm"></div>
+          <div class="claw-pincer">
+            <div class="pincer-top"></div>
+            <div class="pincer-bottom"></div>
+          </div>
+        </div>
+
+        <!-- Right Claw (holding Red Bull) -->
+        <div class="claw-right">
+          <div class="claw-arm"></div>
+          <div class="redbull-can">
+            <div class="can-body"></div>
+          </div>
+          <div class="splash">
+            <div class="drop"></div>
+            <div class="drop"></div>
+            <div class="drop"></div>
+          </div>
+        </div>
+
+        <!-- Tail -->
+        <div class="tail">
+          <div class="tail-segment"></div>
+          <div class="tail-fan">
+            <div class="tail-fin"></div>
+            <div class="tail-fin"></div>
+            <div class="tail-fin"></div>
+          </div>
+        </div>
+
+        <!-- Legs -->
+        <div class="legs">
+          <div class="leg"></div>
+          <div class="leg"></div>
+          <div class="leg"></div>
+          <div class="leg"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <h1>Kelly + Kip apply for <span class="highlight">Clawrchitect</span></h1>
+  <p class="subtitle">A human and her agent, built with OpenClaw</p>
+
+  <!-- Stats -->
+  <div class="stats-grid">
+    <div class="stat-card">
+      <div class="stat-number">3</div>
+      <div class="stat-label">Agents Running</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number">12</div>
+      <div class="stat-label">Daily Cron Jobs</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number">478</div>
+      <div class="stat-label">CRM Contacts</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number">2</div>
+      <div class="stat-label">Weeks Building</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number">0</div>
+      <div class="stat-label">Lines of Code I Wrote</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number">∞</div>
+      <div class="stat-label">Red Bulls Consumed</div>
+    </div>
+  </div>
+
+  <!-- Who We Are -->
+  <div class="section">
+    <h2>Who we are</h2>
+    <p>I'm Kelly. I'm a non-technical founder running a biotech startup from LA. I have an MBA, a biology degree, and zero ability to write code.</p>
+    <p style="margin-top: 12px;">Kip is my OpenClaw agent. He's an owl with cyan circuit patterns who runs my CRM, monitors my email, posts tweets, finds me investor deals at 7:30 every morning, and helped me write this application.</p>
+    <p style="margin-top: 12px;">I listen to AIDB every single day. I joined ClawCamp today. And I've already completed steps 1 through 9 of the build sequence before the first sprint started.</p>
+  </div>
+
+  <!-- What We Built -->
+  <div class="section">
+    <h2>What we built in 2 weeks</h2>
+    <ul>
+      <li>3-agent team: Kip (coordinator/Opus), Scout (researcher/Sonnet), Quill (writer/Sonnet)</li>
+      <li>478-contact CRM that auto-syncs from Gmail every 30 minutes</li>
+      <li>Daily Deal Finder that scans my investor pipeline and drafts outreach every morning</li>
+      <li>Browser automation for Twitter when the Bird CLI gets rate-limited</li>
+      <li>Command center dashboard on GitHub Pages with live data</li>
+      <li>12 cron jobs: market intel, security audits, job alerts, email sync, weekly reviews</li>
+      <li>Handoff documents, memory files, heartbeat protocols, shared context across agents</li>
+      <li>A Napoleon Bonaparte VC parody account with a codeword security system</li>
+    </ul>
+  </div>
+
+  <!-- What We'd Build -->
+  <div class="section">
+    <h2>What we'd build for AIDB</h2>
+    <div class="build-ideas">
+      <div class="build-card">
+        <h3>🧪 Ship or Skip</h3>
+        <p>Weekly segment: 3 new OpenClaw skills drop, I test all three in a real workflow. Ship it or skip it, with receipts. Feeds the ClawCamp resource library with tested, rated entries.</p>
+      </div>
+      <div class="build-card">
+        <h3>🏆 The OpenClaw Combine</h3>
+        <p>Weekly challenge: submit your agent to a standardized real task, timed, scored. Leaderboard drives competition, competition drives Training enrollments.</p>
+      </div>
+      <div class="build-card">
+        <h3>📡 Live Skill Radar</h3>
+        <p>Always-on agent monitoring GitHub, ClawHub, Reddit, and X. Auto-catalogs new capabilities with tags and difficulty. Daily brief for the hosts: "here's what dropped and why it matters."</p>
+      </div>
+      <div class="build-card">
+        <h3>🦞 This Application</h3>
+        <p>Built by a human and her agent in one afternoon. Vibe coded. Deployed to GitHub Pages. The medium is the message.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Signature -->
+  <div class="signature">
+    <div class="sig-names">Kelly Lucas 🦞 + Kip 🦉</div>
+    <div class="sig-detail">
+      Los Angeles, CA<br>
+      <a href="mailto:kellylucas314@gmail.com">kellylucas314@gmail.com</a> · (310) 418-0482<br>
+      ClawCamp Member, Day 1
+    </div>
+    <div class="built-with">This page was built by Kelly and Kip using OpenClaw + Claude Opus 4.6. No humans were harmed in the vibe coding of this application.</div>
+  </div>
+
+</div>
+
+<script>
+  // Generate stars
+  const starsEl = document.getElementById('stars');
+  for (let i = 0; i < 100; i++) {
+    const star = document.createElement('div');
+    star.className = 'star';
+    star.style.left = Math.random() * 100 + '%';
+    star.style.top = Math.random() * 100 + '%';
+    star.style.setProperty('--duration', (2 + Math.random() * 4) + 's');
+    star.style.setProperty('--brightness', (0.3 + Math.random() * 0.7));
+    star.style.animationDelay = Math.random() * 4 + 's';
+    starsEl.appendChild(star);
+  }
+</script>
+
+</body>
+</html>
