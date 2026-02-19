@@ -50,117 +50,41 @@
   /* === LOBSTER SCENE === */
   .scene {
     position: relative;
-    width: 400px;
-    height: 400px;
+    width: 450px;
+    height: 320px;
     margin: 0 auto 40px;
   }
 
-  /* Lobster body */
+  /* Lobster */
   .lobster {
     position: absolute;
-    bottom: 80px;
+    bottom: 50px;
     left: 50%;
-    transform: translateX(-50%);
+    transform: translateX(-40%);
     animation: bobble 3s ease-in-out infinite;
+    filter: drop-shadow(0 4px 20px rgba(231, 76, 60, 0.3));
   }
 
   @keyframes bobble {
-    0%, 100% { transform: translateX(-50%) translateY(0); }
-    50% { transform: translateX(-50%) translateY(-8px); }
+    0%, 100% { transform: translateX(-40%) translateY(0); }
+    50% { transform: translateX(-40%) translateY(-8px); }
   }
 
-  .lobster-body {
-    width: 120px;
-    height: 80px;
-    background: linear-gradient(135deg, #e74c3c, #c0392b);
-    border-radius: 60px 60px 40px 40px;
-    position: relative;
-    box-shadow: 0 4px 20px rgba(231, 76, 60, 0.4);
-  }
-
-  /* Eyes */
-  .lobster-eyes {
-    position: absolute;
-    top: -20px;
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-    gap: 24px;
-  }
-
-  .eye-stalk {
-    width: 4px;
-    height: 20px;
-    background: #c0392b;
-    border-radius: 2px;
-    position: relative;
-  }
-
-  .eye {
-    position: absolute;
-    top: -10px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 14px;
-    height: 14px;
-    background: white;
-    border-radius: 50%;
-    border: 2px solid #2c3e50;
-  }
-
-  .pupil {
-    width: 6px;
-    height: 6px;
-    background: #2c3e50;
-    border-radius: 50%;
-    position: absolute;
-    top: 3px;
-    left: 4px;
-    animation: lookAround 4s ease-in-out infinite;
-  }
-
-  @keyframes lookAround {
-    0%, 100% { left: 4px; }
-    25% { left: 2px; }
-    75% { left: 6px; }
-  }
-
-  /* Smile */
-  .smile {
-    position: absolute;
-    bottom: 18px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 30px;
-    height: 15px;
-    border: 3px solid #2c3e50;
-    border-top: none;
-    border-radius: 0 0 20px 20px;
-  }
-
-  /* Claws */
-  .claw-left, .claw-right {
-    position: absolute;
-    top: 15px;
-  }
-
-  .claw-left {
-    left: -45px;
-    animation: waveLeft 2s ease-in-out infinite;
-    transform-origin: right center;
-  }
-
-  .claw-right {
-    right: -55px;
-    animation: holdCan 3s ease-in-out infinite;
-    transform-origin: left center;
+  .wave-claw {
+    animation: waveLeft 1.5s ease-in-out infinite;
+    transform-origin: 58px 75px;
   }
 
   @keyframes waveLeft {
     0%, 100% { transform: rotate(0deg); }
-    25% { transform: rotate(-20deg); }
-    50% { transform: rotate(10deg); }
-    75% { transform: rotate(-15deg); }
+    25% { transform: rotate(-15deg); }
+    50% { transform: rotate(8deg); }
+    75% { transform: rotate(-10deg); }
+  }
+
+  .hold-claw {
+    animation: holdCan 3s ease-in-out infinite;
+    transform-origin: 142px 75px;
   }
 
   @keyframes holdCan {
@@ -168,83 +92,28 @@
     50% { transform: rotate(-5deg); }
   }
 
-  .claw-arm {
-    width: 35px;
-    height: 8px;
-    background: #e74c3c;
-    border-radius: 4px;
-  }
-
-  .claw-pincer {
-    width: 25px;
-    height: 20px;
-    position: relative;
-    margin-left: -5px;
-  }
-
-  .pincer-top, .pincer-bottom {
-    position: absolute;
-    width: 25px;
-    height: 10px;
-    background: #e74c3c;
-    border-radius: 12px 12px 0 0;
-  }
-
-  .pincer-top {
-    top: 0;
-    animation: pincerOpen 1.5s ease-in-out infinite;
-    transform-origin: bottom left;
-  }
-
-  .pincer-bottom {
-    bottom: 0;
-    border-radius: 0 0 12px 12px;
-  }
-
-  @keyframes pincerOpen {
-    0%, 100% { transform: rotate(0deg); }
-    50% { transform: rotate(-15deg); }
-  }
-
   /* Red Bull Can */
   .redbull-can {
     position: absolute;
-    right: -80px;
-    top: -15px;
+    right: -15px;
+    top: -40px;
     animation: tiltCan 3s ease-in-out infinite;
     transform-origin: bottom center;
+    filter: drop-shadow(2px 2px 8px rgba(0,0,0,0.3));
   }
 
   @keyframes tiltCan {
-    0%, 100% { transform: rotate(0deg); }
-    30% { transform: rotate(-25deg); }
-    50% { transform: rotate(-25deg); }
-    80% { transform: rotate(0deg); }
-  }
-
-  .can-body {
-    width: 28px;
-    height: 65px;
-    background: linear-gradient(180deg, #c0c0c0 0%, #c0c0c0 15%, #1a3a6b 15%, #1a3a6b 45%, #d4af37 45%, #d4af37 55%, #cc0000 55%, #cc0000 100%);
-    border-radius: 6px 6px 4px 4px;
-    position: relative;
-    box-shadow: 2px 2px 10px rgba(0,0,0,0.3);
-  }
-
-  .can-body::before {
-    content: '🐂';
-    position: absolute;
-    top: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    font-size: 10px;
+    0%, 100% { transform: rotate(-15deg); }
+    30% { transform: rotate(-35deg); }
+    50% { transform: rotate(-35deg); }
+    80% { transform: rotate(-15deg); }
   }
 
   /* Splash drops */
-  .splash {
+  .splash-drops {
     position: absolute;
-    right: -65px;
-    top: -25px;
+    right: -5px;
+    top: -55px;
     opacity: 0;
     animation: splash 3s ease-in-out infinite;
   }
@@ -257,197 +126,18 @@
     100% { opacity: 0; }
   }
 
-  .drop {
-    width: 4px;
-    height: 6px;
-    background: #f5d442;
-    border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
-    position: absolute;
-  }
-
-  .drop:nth-child(1) { left: 0; top: 0; animation-delay: 0.1s; }
-  .drop:nth-child(2) { left: 10px; top: -5px; animation-delay: 0.2s; }
-  .drop:nth-child(3) { left: 5px; top: 5px; animation-delay: 0.15s; }
-
-  /* Tail */
-  .tail {
-    position: absolute;
-    bottom: -15px;
-    left: 50%;
-    transform: translateX(-50%);
-    animation: tailWag 2s ease-in-out infinite;
-  }
-
-  .tail-segment {
-    width: 60px;
-    height: 12px;
-    background: linear-gradient(90deg, #c0392b, #e74c3c);
-    border-radius: 0 0 6px 6px;
-    margin: 0 auto;
-  }
-
-  .tail-fan {
-    display: flex;
-    gap: 2px;
-    justify-content: center;
-    margin-top: 2px;
-  }
-
-  .tail-fin {
-    width: 18px;
-    height: 14px;
-    background: #c0392b;
-    border-radius: 0 0 10px 10px;
-  }
-
-  @keyframes tailWag {
-    0%, 100% { transform: translateX(-50%) rotate(0deg); }
-    50% { transform: translateX(-50%) rotate(5deg); }
-  }
-
-  /* Legs */
-  .legs {
-    position: absolute;
-    bottom: -8px;
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-    gap: 8px;
-  }
-
-  .leg {
-    width: 3px;
-    height: 15px;
-    background: #c0392b;
-    border-radius: 2px;
-    animation: legWalk 1s ease-in-out infinite;
-  }
-
-  .leg:nth-child(even) { animation-delay: 0.5s; }
-
-  @keyframes legWalk {
-    0%, 100% { transform: rotate(-5deg); }
-    50% { transform: rotate(5deg); }
-  }
-
   /* Owl (Kip) */
   .owl {
     position: absolute;
-    bottom: 90px;
-    left: 55px;
+    bottom: 55px;
+    left: 40px;
     animation: owlBob 4s ease-in-out infinite;
+    filter: drop-shadow(0 3px 15px rgba(0,0,0,0.3));
   }
 
   @keyframes owlBob {
     0%, 100% { transform: translateY(0) rotate(0deg); }
     50% { transform: translateY(-5px) rotate(3deg); }
-  }
-
-  .owl-body {
-    width: 50px;
-    height: 55px;
-    background: linear-gradient(180deg, #8B6914, #a67c00);
-    border-radius: 25px 25px 20px 20px;
-    position: relative;
-    box-shadow: 0 3px 15px rgba(0,0,0,0.3);
-  }
-
-  .owl-eyes {
-    position: absolute;
-    top: 10px;
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-    gap: 6px;
-  }
-
-  .owl-eye {
-    width: 16px;
-    height: 16px;
-    background: white;
-    border-radius: 50%;
-    border: 2px solid #5a4500;
-    position: relative;
-  }
-
-  .owl-pupil {
-    width: 8px;
-    height: 8px;
-    background: #2c3e50;
-    border-radius: 50%;
-    position: absolute;
-    top: 3px;
-    left: 3px;
-    animation: owlLook 5s ease-in-out infinite;
-  }
-
-  @keyframes owlLook {
-    0%, 100% { left: 3px; top: 3px; }
-    30% { left: 5px; top: 2px; }
-    60% { left: 2px; top: 4px; }
-  }
-
-  .owl-beak {
-    position: absolute;
-    top: 24px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 0;
-    height: 0;
-    border-left: 5px solid transparent;
-    border-right: 5px solid transparent;
-    border-top: 8px solid #f39c12;
-  }
-
-  .owl-wings {
-    position: absolute;
-    top: 30px;
-    width: 100%;
-  }
-
-  .owl-wing-left, .owl-wing-right {
-    position: absolute;
-    width: 15px;
-    height: 25px;
-    background: #7a5f10;
-    border-radius: 50%;
-  }
-
-  .owl-wing-left { left: -5px; transform: rotate(15deg); }
-  .owl-wing-right { right: -5px; transform: rotate(-15deg); }
-
-  /* Circuit pattern on owl (Kip's signature) */
-  .circuit-line {
-    position: absolute;
-    background: #00e5ff;
-    opacity: 0.6;
-    border-radius: 1px;
-    animation: circuitGlow 2s ease-in-out infinite alternate;
-  }
-
-  @keyframes circuitGlow {
-    0% { opacity: 0.3; }
-    100% { opacity: 0.8; }
-  }
-
-  .circuit-line:nth-child(1) { width: 20px; height: 1px; top: 38px; left: 15px; }
-  .circuit-line:nth-child(2) { width: 1px; height: 12px; top: 38px; left: 35px; }
-  .circuit-line:nth-child(3) { width: 15px; height: 1px; top: 44px; left: 20px; }
-
-  .owl-feet {
-    position: absolute;
-    bottom: -8px;
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-    gap: 12px;
-  }
-
-  .owl-foot {
-    width: 12px;
-    height: 5px;
-    background: #f39c12;
-    border-radius: 0 0 6px 6px;
   }
 
   /* Speech bubble */
@@ -679,77 +369,163 @@
     <div class="floor"></div>
     <div class="floor-glow"></div>
 
-    <!-- Kip the Owl -->
+    <!-- Kip the Owl (SVG) -->
     <div class="owl">
       <div class="speech-bubble">I drafted this app btw 🦉</div>
-      <div class="owl-body">
-        <div class="owl-eyes">
-          <div class="owl-eye"><div class="owl-pupil"></div></div>
-          <div class="owl-eye"><div class="owl-pupil"></div></div>
-        </div>
-        <div class="owl-beak"></div>
-        <div class="owl-wings">
-          <div class="owl-wing-left"></div>
-          <div class="owl-wing-right"></div>
-        </div>
-        <div class="circuit-line"></div>
-        <div class="circuit-line"></div>
-        <div class="circuit-line"></div>
-        <div class="owl-feet">
-          <div class="owl-foot"></div>
-          <div class="owl-foot"></div>
-        </div>
-      </div>
+      <svg width="90" height="110" viewBox="0 0 90 110" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <!-- Owl body -->
+        <ellipse cx="45" cy="65" rx="30" ry="35" fill="#8B6914"/>
+        <ellipse cx="45" cy="68" rx="26" ry="30" fill="#a67c00"/>
+        <!-- Belly -->
+        <ellipse cx="45" cy="75" rx="18" ry="20" fill="#c4a035"/>
+        <!-- Chest feather pattern -->
+        <path d="M35 65 Q45 60 55 65 Q45 70 35 65Z" fill="#8B6914" opacity="0.5"/>
+        <path d="M37 72 Q45 67 53 72 Q45 77 37 72Z" fill="#8B6914" opacity="0.4"/>
+        <!-- Head tufts (ear tufts) -->
+        <path d="M22 38 L28 28 L33 40Z" fill="#7a5f10"/>
+        <path d="M68 38 L62 28 L57 40Z" fill="#7a5f10"/>
+        <!-- Face disc -->
+        <ellipse cx="35" cy="45" rx="14" ry="13" fill="#c4a035"/>
+        <ellipse cx="55" cy="45" rx="14" ry="13" fill="#c4a035"/>
+        <!-- Eyes -->
+        <circle cx="35" cy="44" r="10" fill="white" stroke="#5a4500" stroke-width="1.5"/>
+        <circle cx="55" cy="44" r="10" fill="white" stroke="#5a4500" stroke-width="1.5"/>
+        <!-- Pupils -->
+        <circle cx="37" cy="44" r="5" fill="#2c3e50">
+          <animate attributeName="cx" values="37;35;39;37" dur="5s" repeatCount="indefinite"/>
+        </circle>
+        <circle cx="57" cy="44" r="5" fill="#2c3e50">
+          <animate attributeName="cx" values="57;55;59;57" dur="5s" repeatCount="indefinite"/>
+        </circle>
+        <!-- Eye shine -->
+        <circle cx="34" cy="42" r="2" fill="white" opacity="0.8"/>
+        <circle cx="54" cy="42" r="2" fill="white" opacity="0.8"/>
+        <!-- Beak -->
+        <path d="M42 52 L45 58 L48 52Z" fill="#f39c12"/>
+        <!-- Wings -->
+        <ellipse cx="16" cy="65" rx="10" ry="22" fill="#7a5f10" transform="rotate(10 16 65)"/>
+        <ellipse cx="74" cy="65" rx="10" ry="22" fill="#7a5f10" transform="rotate(-10 74 65)"/>
+        <!-- Circuit patterns (Kip's signature) -->
+        <line x1="32" y1="78" x2="58" y2="78" stroke="#00e5ff" stroke-width="1" opacity="0.6">
+          <animate attributeName="opacity" values="0.3;0.8;0.3" dur="2s" repeatCount="indefinite"/>
+        </line>
+        <line x1="45" y1="72" x2="45" y2="85" stroke="#00e5ff" stroke-width="1" opacity="0.5">
+          <animate attributeName="opacity" values="0.5;0.9;0.5" dur="2.5s" repeatCount="indefinite"/>
+        </line>
+        <circle cx="45" cy="78" r="2" fill="#00e5ff" opacity="0.7">
+          <animate attributeName="opacity" values="0.4;1;0.4" dur="1.5s" repeatCount="indefinite"/>
+        </circle>
+        <!-- Feet -->
+        <path d="M33 96 L28 104 M33 96 L33 105 M33 96 L38 104" stroke="#f39c12" stroke-width="2.5" stroke-linecap="round"/>
+        <path d="M57 96 L52 104 M57 96 L57 105 M57 96 L62 104" stroke="#f39c12" stroke-width="2.5" stroke-linecap="round"/>
+      </svg>
     </div>
 
-    <!-- Lobster -->
+    <!-- Lobster (SVG) -->
     <div class="lobster">
-      <div class="lobster-body">
-        <div class="lobster-eyes">
-          <div class="eye-stalk"><div class="eye"><div class="pupil"></div></div></div>
-          <div class="eye-stalk"><div class="eye"><div class="pupil"></div></div></div>
-        </div>
-        <div class="smile"></div>
+      <svg width="200" height="170" viewBox="0 0 200 170" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <!-- Tail segments -->
+        <rect x="62" y="120" width="76" height="14" rx="4" fill="#b83227"/>
+        <rect x="68" y="134" width="64" height="12" rx="4" fill="#a52a1a"/>
+        <rect x="72" y="146" width="56" height="10" rx="4" fill="#922516"/>
+        <!-- Tail fan -->
+        <ellipse cx="85" cy="160" rx="12" ry="8" fill="#c0392b" transform="rotate(-15 85 160)"/>
+        <ellipse cx="100" cy="162" rx="12" ry="8" fill="#c0392b"/>
+        <ellipse cx="115" cy="160" rx="12" ry="8" fill="#c0392b" transform="rotate(15 115 160)"/>
 
-        <!-- Left Claw (waving) -->
-        <div class="claw-left">
-          <div class="claw-arm"></div>
-          <div class="claw-pincer">
-            <div class="pincer-top"></div>
-            <div class="pincer-bottom"></div>
-          </div>
-        </div>
+        <!-- Main body -->
+        <ellipse cx="100" cy="90" rx="42" ry="35" fill="#e74c3c"/>
+        <ellipse cx="100" cy="88" rx="38" ry="30" fill="#ef5350"/>
+        <!-- Body segments -->
+        <path d="M62 85 Q100 80 138 85" stroke="#c0392b" stroke-width="1.5" fill="none"/>
+        <path d="M65 95 Q100 90 135 95" stroke="#c0392b" stroke-width="1.5" fill="none"/>
+        <path d="M62 105 Q100 100 138 105" stroke="#c0392b" stroke-width="1.5" fill="none"/>
 
-        <!-- Right Claw (holding Red Bull) -->
-        <div class="claw-right">
-          <div class="claw-arm"></div>
-          <div class="redbull-can">
-            <div class="can-body"></div>
-          </div>
-          <div class="splash">
-            <div class="drop"></div>
-            <div class="drop"></div>
-            <div class="drop"></div>
-          </div>
-        </div>
+        <!-- Head -->
+        <ellipse cx="100" cy="62" rx="30" ry="22" fill="#e74c3c"/>
+        <ellipse cx="100" cy="60" rx="26" ry="18" fill="#ef5350"/>
 
-        <!-- Tail -->
-        <div class="tail">
-          <div class="tail-segment"></div>
-          <div class="tail-fan">
-            <div class="tail-fin"></div>
-            <div class="tail-fin"></div>
-            <div class="tail-fin"></div>
-          </div>
-        </div>
+        <!-- Eye stalks -->
+        <rect x="78" y="30" width="5" height="20" rx="2.5" fill="#c0392b"/>
+        <rect x="117" y="30" width="5" height="20" rx="2.5" fill="#c0392b"/>
+        <!-- Eyes -->
+        <circle cx="80" cy="27" r="9" fill="white" stroke="#2c3e50" stroke-width="1.5"/>
+        <circle cx="120" cy="27" r="9" fill="white" stroke="#2c3e50" stroke-width="1.5"/>
+        <!-- Pupils -->
+        <circle cx="82" cy="27" r="4.5" fill="#2c3e50">
+          <animate attributeName="cx" values="82;80;84;82" dur="4s" repeatCount="indefinite"/>
+        </circle>
+        <circle cx="122" cy="27" r="4.5" fill="#2c3e50">
+          <animate attributeName="cx" values="122;120;124;122" dur="4s" repeatCount="indefinite"/>
+        </circle>
+        <!-- Eye shine -->
+        <circle cx="79" cy="25" r="2.5" fill="white" opacity="0.8"/>
+        <circle cx="119" cy="25" r="2.5" fill="white" opacity="0.8"/>
 
-        <!-- Legs -->
-        <div class="legs">
-          <div class="leg"></div>
-          <div class="leg"></div>
-          <div class="leg"></div>
-          <div class="leg"></div>
-        </div>
+        <!-- Smile -->
+        <path d="M90 68 Q100 76 110 68" stroke="#2c3e50" stroke-width="2" fill="none" stroke-linecap="round"/>
+
+        <!-- Antennae -->
+        <path d="M85 45 Q70 20 55 10" stroke="#c0392b" stroke-width="2" fill="none" stroke-linecap="round"/>
+        <path d="M115 45 Q130 20 145 10" stroke="#c0392b" stroke-width="2" fill="none" stroke-linecap="round"/>
+        <circle cx="55" cy="10" r="3" fill="#e74c3c"/>
+        <circle cx="145" cy="10" r="3" fill="#e74c3c"/>
+
+        <!-- Left claw arm (waving) -->
+        <g class="wave-claw">
+          <path d="M58 75 L25 55" stroke="#e74c3c" stroke-width="8" stroke-linecap="round"/>
+          <!-- Left claw pincer -->
+          <ellipse cx="18" cy="45" rx="14" ry="10" fill="#e74c3c" transform="rotate(-20 18 45)"/>
+          <ellipse cx="15" cy="38" rx="12" ry="7" fill="#ef5350" transform="rotate(-30 15 38)"/>
+          <path d="M8 42 Q14 35 22 40" stroke="#c0392b" stroke-width="2" fill="none"/>
+        </g>
+
+        <!-- Right claw arm (holding can) -->
+        <g class="hold-claw">
+          <path d="M142 75 L170 50" stroke="#e74c3c" stroke-width="8" stroke-linecap="round"/>
+          <!-- Right claw pincer -->
+          <ellipse cx="178" cy="42" rx="14" ry="10" fill="#e74c3c" transform="rotate(20 178 42)"/>
+          <ellipse cx="182" cy="35" rx="12" ry="7" fill="#ef5350" transform="rotate(30 182 35)"/>
+          <path d="M172 38 Q178 32 186 37" stroke="#c0392b" stroke-width="2" fill="none"/>
+        </g>
+
+        <!-- Legs (4 pairs) -->
+        <line x1="70" y1="100" x2="55" y2="115" stroke="#c0392b" stroke-width="3" stroke-linecap="round"/>
+        <line x1="75" y1="105" x2="58" y2="120" stroke="#c0392b" stroke-width="3" stroke-linecap="round"/>
+        <line x1="130" y1="100" x2="145" y2="115" stroke="#c0392b" stroke-width="3" stroke-linecap="round"/>
+        <line x1="125" y1="105" x2="142" y2="120" stroke="#c0392b" stroke-width="3" stroke-linecap="round"/>
+      </svg>
+
+      <!-- Red Bull Can (separate so it can animate independently) -->
+      <div class="redbull-can">
+        <svg width="40" height="75" viewBox="0 0 40 75" xmlns="http://www.w3.org/2000/svg">
+          <!-- Can body -->
+          <rect x="5" y="8" width="30" height="60" rx="4" fill="#1a3a6b"/>
+          <!-- Can top rim -->
+          <ellipse cx="20" cy="10" rx="15" ry="4" fill="#c0c0c0"/>
+          <ellipse cx="20" cy="10" rx="13" ry="3" fill="#a0a0a0"/>
+          <!-- Can bottom -->
+          <ellipse cx="20" cy="66" rx="15" ry="3" fill="#c0c0c0"/>
+          <!-- Red Bull design elements -->
+          <rect x="5" y="28" width="30" height="3" fill="#d4af37"/>
+          <rect x="5" y="35" width="30" height="28" rx="0" fill="#cc0000"/>
+          <!-- Bulls -->
+          <text x="20" y="52" text-anchor="middle" font-size="16">🐂</text>
+          <!-- Red Bull text area -->
+          <rect x="8" y="16" width="24" height="10" rx="2" fill="#cc0000"/>
+          <text x="20" y="24" text-anchor="middle" font-size="6" fill="white" font-weight="bold" font-family="Arial">RED BULL</text>
+          <!-- Pull tab -->
+          <ellipse cx="22" cy="8" rx="4" ry="2" fill="#d0d0d0" stroke="#999" stroke-width="0.5"/>
+        </svg>
+      </div>
+
+      <!-- Splash drops -->
+      <div class="splash-drops">
+        <svg width="30" height="30" viewBox="0 0 30 30" xmlns="http://www.w3.org/2000/svg">
+          <ellipse cx="8" cy="10" rx="3" ry="4" fill="#f5d442" opacity="0.8"/>
+          <ellipse cx="18" cy="5" rx="2" ry="3" fill="#f5d442" opacity="0.6"/>
+          <ellipse cx="25" cy="12" rx="2.5" ry="3.5" fill="#f5d442" opacity="0.7"/>
+        </svg>
       </div>
     </div>
   </div>
