@@ -50,8 +50,8 @@
   /* === LOBSTER SCENE === */
   .scene {
     position: relative;
-    width: 450px;
-    height: 320px;
+    width: 550px;
+    height: 420px;
     margin: 0 auto 40px;
   }
 
@@ -59,15 +59,15 @@
   .lobster {
     position: absolute;
     bottom: 50px;
-    left: 50%;
-    transform: translateX(-40%);
+    left: 52%;
+    transform: translateX(-40%) scale(1.5);
     animation: bobble 3s ease-in-out infinite;
     filter: drop-shadow(0 4px 20px rgba(231, 76, 60, 0.3));
   }
 
   @keyframes bobble {
-    0%, 100% { transform: translateX(-40%) translateY(0); }
-    50% { transform: translateX(-40%) translateY(-8px); }
+    0%, 100% { transform: translateX(-40%) scale(1.5) translateY(0); }
+    50% { transform: translateX(-40%) scale(1.5) translateY(-8px); }
   }
 
   .wave-claw {
@@ -129,10 +129,16 @@
   /* Owl (Kip) */
   .owl {
     position: absolute;
-    bottom: 55px;
-    left: 40px;
+    bottom: 65px;
+    left: 30px;
     animation: owlBob 4s ease-in-out infinite;
     filter: drop-shadow(0 3px 15px rgba(0,0,0,0.3));
+    transform-origin: center bottom;
+  }
+
+  .owl svg {
+    width: 120px;
+    height: 145px;
   }
 
   @keyframes owlBob {
